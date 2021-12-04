@@ -43,4 +43,10 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::delete('user/{id}', 'Api\UserController@destroy');
 
     Route::post('logout', 'Api\AuthController@logout');
+
+    Route::get('review', 'Api\ReviewController@index');
+    Route::get('review/{id}', 'Api\ReviewController@show');
+    Route::post('review', 'Api\ReviewController@store');
+    Route::put('review/{id}', 'Api\ReviewController@update');
+    Route::delete('review/{id}', 'Api\ReviewController@destroy');
 });
