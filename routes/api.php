@@ -49,4 +49,16 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('review', 'Api\ReviewController@store');
     Route::put('review/{id}', 'Api\ReviewController@update');
     Route::delete('review/{id}', 'Api\ReviewController@destroy');
+
+    Route::get('reservation', 'Api\ReservationController@index');
+    Route::get('reservation/{id}', 'Api\ReservationController@show');
+    Route::post('reservation', 'Api\ReservationController@store');
+    Route::put('reservation/{id}', 'Api\ReservationController@update');
+    Route::delete('reservation/{id}', 'Api\ReservationController@destroy');
+
+    Route::get('order', 'Api\OrderController@index');
+    Route::get('order/{id}', 'Api\OrderController@show');
+    Route::post('order', 'Api\OrderController@store');
+    Route::put('order/{id}', 'Api\OrderController@update');
+    Route::delete('order/{id}', 'Api\OrderController@destroy');
 });
