@@ -11,7 +11,7 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable=[
-        'nama_reservator', 'no_telp', 'no_meja'
+        'nama_reservator', 'email_reservator', 'no_telp', 'no_meja'
     ];
 
     public function getCreatedAtAttribute()

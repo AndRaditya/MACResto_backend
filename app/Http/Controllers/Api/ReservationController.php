@@ -54,7 +54,8 @@ class ReservationController extends Controller
         $storeData = $request->all(); // mengambil semua input dari api client
         $validate = Validator::make($storeData, [
             'nama_reservator' => 'required|max:100|unique:reservations',
-            'no_telp' => 'required || numeric || digits_between:10,13',
+            'email_reservator' => 'required|max:100|unique:reservations',
+            'no_telp' => 'required|numeric|digits_between:10,13',
             'no_meja' => 'required|numeric'
         ]); // membuat rule validasi input
 
@@ -109,8 +110,9 @@ class ReservationController extends Controller
 
         $updateData = $request->all(); // mengambil semua input dari api client
         $validate = Validator::make($updateData, [
-            'nama_reservator' => ['max:100', 'required', Rule::unique('reservations')->ignore($reservation)],
-            'no_telp' => 'required || numeric || digits_between:10,13',
+            'nama_reservator' => 'required',
+            'email_reservator' => 'required',
+            'no_telp' => 'required',
             'no_meja' => 'required|numeric'
         ]); // membuat rule validasi input
 
@@ -118,6 +120,7 @@ class ReservationController extends Controller
             return response(['message' => $validate->errors()], 400); // return error invalid input
 
         $reservation->nama_reservator = $updateData['nama_reservator'];
+        $reservation->email_reservator = $updateData['email_reservator'];
         $reservation->no_telp = $updateData['no_telp'];
         $reservation->no_meja = $updateData['no_meja'];
 
